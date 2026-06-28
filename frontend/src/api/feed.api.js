@@ -1,7 +1,7 @@
 import api from "./axios";
 
-export const getFeed = (cursor) =>
-  api.get("/api/feed", { params: { cursor, limit: 10 } });
+export const getFeed = (cursor, mood) =>
+  api.get("/api/feed", { params: { cursor, mood, limit: 10 } });
 
 export const getStories = () => api.get("/api/feed/stories");
 

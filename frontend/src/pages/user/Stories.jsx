@@ -13,7 +13,7 @@ export default function Stories() {
   // Fetch feed items based on selected mood filter
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ["feed", selectedMood],
-    queryFn: () => getFeed(selectedMood || ""),
+    queryFn: () => getFeed(null, selectedMood || ""),
     refetchOnWindowFocus: false,
   });
 
