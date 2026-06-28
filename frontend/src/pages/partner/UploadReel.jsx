@@ -86,7 +86,7 @@ export default function UploadReel() {
   };
 
   return (
-    <div className="min-h-screen bg-white pb-8">
+    <div className="h-full w-full bg-white overflow-y-auto pb-8">
       {/* Header */}
       <div className="px-4 py-3 bg-white border-b border-gray-100 flex items-center gap-3">
         <Link to="/partner/dashboard" className="p-1 rounded-full hover:bg-gray-100 text-gray-700 transition">

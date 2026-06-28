@@ -20,7 +20,7 @@ export default function Stories() {
   const reels = (data?.data?.feed || data?.data?.trending || []).filter(Boolean);
 
   return (
-    <div className="h-full w-full flex flex-col bg-white">
+    <div className="h-full w-full max-w-md mx-auto flex flex-col bg-white border-x border-gray-100 shadow-xl relative pb-16">
       {/* Header story selector bar */}
       <div className="bg-white z-40">
         <div className="px-4 pt-3 flex justify-between items-center bg-white">

@@ -112,7 +112,7 @@ export default function ReelCard({ reel, isActive }) {
   return (
     <div
       ref={intersectionRef}
-      className="relative w-full h-[100dvh] snap-start flex-shrink-0 bg-black flex flex-col justify-between overflow-hidden"
+      className="relative w-full h-full snap-start flex-shrink-0 bg-black flex flex-col justify-between overflow-hidden"
     >
       {/* Video element */}
       <video

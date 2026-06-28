@@ -23,7 +23,7 @@ export default function Feed() {
   };
 
   return (
-    <div className="h-full w-full flex flex-col bg-white overflow-hidden pb-16">
+    <div className="h-full w-full max-w-md mx-auto flex flex-col bg-white overflow-hidden pb-16 border-x border-gray-100 shadow-xl relative">
       {/* Top sticky header */}
       <header className="flex justify-between items-center px-4 pt-4 pb-2 bg-white z-40">
         <div className="flex flex-col">

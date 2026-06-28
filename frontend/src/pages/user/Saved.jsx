@@ -21,7 +21,7 @@ export default function Saved() {
   }
 
   return (
-    <div className="h-full w-full flex flex-col bg-white overflow-hidden pb-16">
+    <div className="h-full w-full max-w-md mx-auto flex flex-col bg-white overflow-hidden pb-16 border-x border-gray-100 shadow-xl relative">
       {/* Header */}
       <header className="px-4 pt-4 pb-3 border-b border-gray-100 flex items-center gap-2">
         <Bookmark className="text-brand" size={22} />
