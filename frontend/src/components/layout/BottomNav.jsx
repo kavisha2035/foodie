@@ -20,8 +20,12 @@ export default function BottomNav() {
              ${isActive ? "text-brand scale-110" : "text-gray-400 hover:text-gray-600"}`
           }
         >
-          <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
-          <span>{label}</span>
+          {({ isActive }) => (
+            <>
+              <Icon size={20} strokeWidth={isActive ? 2.5 : 2} />
+              <span>{label}</span>
+            </>
+          )}
         </NavLink>
       ))}
     </nav>
