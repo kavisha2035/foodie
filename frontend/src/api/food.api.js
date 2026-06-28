@@ -24,3 +24,5 @@ export const toggleSave = (foodId) => api.post("/api/food/save", { foodId });
 export const getSavedFoods = () => api.get("/api/food/save");
 
 export const getFoodPartnerById = (id) => api.get(`/api/food-partner/${id}`);
+
+export const getPartnerReels = () => api.get("/api/food-partner/reels");

@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getFoodPartnerOrders, updateOrderStatus } from "../../api/order.api";
 import { logoutPartner } from "../../api/auth.api";
-import { getFoodItems, updateFood, deleteFood } from "../../api/food.api";
+import { getPartnerReels, updateFood, deleteFood } from "../../api/food.api";
 import { useAuthStore } from "../../store/authStore";
 import { useNavigate, Link } from "react-router-dom";
 import { LogOut, Upload, ShoppingBag, Store, User, ToggleLeft, ToggleRight, Trash2, ShieldAlert } from "lucide-react";
@@ -22,17 +22,15 @@ export default function PartnerDashboard() {
     refetchOnWindowFocus: false,
   });
 
-  // Fetch all food items (client profile query is reused or we filter for owned items)
+  // Fetch partner's own uploaded reels
   const { data: foodData, isLoading: foodLoading } = useQuery({
-    queryKey: ["allFoodItems"],
-    queryFn: getFoodItems,
+    queryKey: ["partnerReels"],
+    queryFn: getPartnerReels,
     refetchOnWindowFocus: false,
   });
 
   const orders = ordersData?.data?.orders ?? [];
-  const allReels = foodData?.data?.foodItems ?? [];
-  // Filter for reels uploaded by this partner
-  const myReels = allReels.filter(r => r.foodPartner === partner._id || r.foodPartner?._id === partner._id);
+  const myReels = foodData?.data?.foodItems ?? [];
 
   // Status transitions mutation
   const updateStatusMutation = useMutation({
@@ -50,7 +48,7 @@ export default function PartnerDashboard() {
   const toggleAvailableMutation = useMutation({
     mutationFn: ({ id, isAvailable }) => updateFood(id, { isAvailable }),
     onSuccess: () => {
-      queryClient.invalidateQueries(["allFoodItems"]);
+      queryClient.invalidateQueries(["partnerReels"]);
       toast.success("Availability updated");
     }
   });
@@ -59,7 +57,7 @@ export default function PartnerDashboard() {
   const deleteFoodMutation = useMutation({
     mutationFn: (id) => deleteFood(id),
     onSuccess: () => {
-      queryClient.invalidateQueries(["allFoodItems"]);
+      queryClient.invalidateQueries(["partnerReels"]);
       toast.success("Food reel deleted successfully");
     }
   });

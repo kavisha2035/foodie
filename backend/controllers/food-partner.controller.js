@@ -22,6 +22,21 @@ async function getFoodPartnerById(req, res) {
     });
 }
 
+async function getPartnerReels(req, res) {
+    try {
+        const partnerId = req.foodPartner._id;
+        const reels = await foodModel.find({ foodPartner: partnerId }).sort({ createdAt: -1 });
+        res.status(200).json({
+            message: "Partner reels fetched successfully",
+            foodItems: reels
+        });
+    } catch (error) {
+        console.error("Get Partner Reels Error:", error);
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
 module.exports = {
-    getFoodPartnerById
+    getFoodPartnerById,
+    getPartnerReels
 };
