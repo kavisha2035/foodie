@@ -28,7 +28,7 @@ export default function OrderPanel({ reel, onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/60 z-50 flex items-end justify-center"
+      className="fixed inset-0 bg-black/60 z-[100] flex items-end justify-center"
       onClick={onClose}
     >
       <motion.div
@@ -36,7 +36,7 @@ export default function OrderPanel({ reel, onClose }) {
         animate={{ y: 0 }}
         exit={{ y: "100%" }}
         transition={{ type: "spring", damping: 25, stiffness: 250 }}
-        className="bg-white w-full max-w-md rounded-t-3xl p-6 shadow-2xl pb-safe"
+        className="bg-white w-full max-w-md rounded-t-3xl p-6 shadow-2xl pb-8"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
