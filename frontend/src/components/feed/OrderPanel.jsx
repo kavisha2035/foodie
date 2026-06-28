@@ -3,6 +3,7 @@ import { X, ShoppingBag } from "lucide-react";
 import { placeOrder } from "../../api/order.api";
 import toast from "react-hot-toast";
 import { useState } from "react";
+import { createPortal } from "react-dom";
 
 export default function OrderPanel({ reel, onClose }) {
   const [loading, setLoading] = useState(false);
@@ -23,7 +24,7 @@ export default function OrderPanel({ reel, onClose }) {
     }
   };
 
-  return (
+  return createPortal(
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -93,6 +94,7 @@ export default function OrderPanel({ reel, onClose }) {
           {loading ? "Placing Order..." : "Confirm Order"}
         </button>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body
   );
 }
