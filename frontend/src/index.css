@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent; /* removes blue flash on tap in mobile browsers */
+  touch-action: manipulation;               /* removes 300ms tap delay */
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;                         /* prevents bounce/scroll behaviors */
+  background: #FFFFFF;
+  color: #111827;
+  font-family: 'Outfit', sans-serif;
+  overscroll-behavior: none;               /* prevents pull-to-refresh */
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hide scrollbars but keep scroll working (for horizontal story bars, etc.) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Base Utility Classes */
+.btn-primary {
+  @apply bg-brand hover:bg-brand-dark text-white font-bold py-3 px-6 rounded-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed active:scale-95 flex items-center justify-center gap-2;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-xl transition-all duration-200 active:scale-95 flex items-center justify-center gap-2;
+}
+
+.input-field {
+  @apply w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:border-brand focus:bg-white transition-all duration-200;
+}
