@@ -34,8 +34,19 @@ async function getFeed(req, res) {
         // Check if user is new (cold start)
         const userInteractionCount = await Interaction.countDocuments({ userId });
         if (userInteractionCount < 5) {
-            // Fall back to trending
-            return getTrending(req, res);
+            const trendingItems = await foodModel.find({ isAvailable: true })
+                .sort({ likeCount: -1, savesCount: -1, createdAt: -1 })
+                .limit(limitNum)
+                .populate('foodPartner', 'name address city');
+
+            return res.status(200).json({
+                message: "Cold start feed fetched successfully",
+                feed: trendingItems,
+                pagination: {
+                    nextCursor: null,
+                    hasMore: false
+                }
+            });
         }
 
         // Build match filter

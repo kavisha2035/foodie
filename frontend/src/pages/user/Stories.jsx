@@ -17,7 +17,7 @@ export default function Stories() {
     refetchOnWindowFocus: false,
   });
 
-  const reels = data?.data?.feed ?? [];
+  const reels = (data?.data?.feed || data?.data?.trending || []).filter(Boolean);
 
   return (
     <div className="h-full w-full flex flex-col bg-white">

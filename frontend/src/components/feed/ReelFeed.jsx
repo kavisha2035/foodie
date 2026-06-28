@@ -7,7 +7,7 @@ export default function ReelFeed() {
   const { data, fetchNextPage, hasNextPage, isFetching, isLoading } = useFeed();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const reels = data?.pages.flatMap((p) => p.data.feed) ?? [];
+  const reels = data?.pages.flatMap((p) => p.data.feed || p.data.trending || []).filter(Boolean) ?? [];
 
   // Fetch more reels when scrolling close to the end
   useEffect(() => {
